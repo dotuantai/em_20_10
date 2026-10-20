@@ -586,16 +586,13 @@ function initPolaroidGallery() {
 }
 
 // ==========================================================================
-// 11. HỘP QUÀ BÍ MẬT & NÚT ÔM / HÔN
+// 11. HỘP QUÀ BÍ MẬT & THÔNG ĐIỆP ANH YÊU EM
 // ==========================================================================
 function initMysteryGiftBox() {
   const giftBox = document.getElementById("mystery-gift-box");
   const giftCard = document.getElementById("gift-card");
   const statusText = document.getElementById("gift-status-text");
-  const btnHug = document.getElementById("btn-hug-me");
-  const btnKiss = document.getElementById("btn-kiss-me");
-  const sweetToast = document.getElementById("sweet-toast");
-  const toastText = document.getElementById("toast-text");
+  const giftLoveText = document.getElementById("gift-love-text");
 
   let isOpened = false;
 
@@ -620,37 +617,18 @@ function initMysteryGiftBox() {
     });
   }
 
-  function showSweetToast(message, icon = "🥰") {
-    if (!sweetToast || !toastText) return;
-    toastText.textContent = message;
-    const toastIcon = sweetToast.querySelector(".toast-icon");
-    if (toastIcon) toastIcon.textContent = icon;
-
-    sweetToast.classList.remove("hidden");
-    playPopSound();
-
-    setTimeout(() => {
-      sweetToast.classList.add("hidden");
-    }, 3800);
-  }
-
-  if (btnHug) {
-    btnHug.addEventListener("click", () => {
-      showSweetToast(`Anh ôm ${CONFIG.loverName} thật chặt vào lòng nè! Yêu em nhất quả đất! 🥰`, "🫂");
+  if (giftLoveText) {
+    giftLoveText.addEventListener("click", () => {
+      playPopSound();
       if (window.confetti) {
         confetti({
-          particleCount: 40,
-          spread: 60,
-          origin: { y: 0.7 }
+          particleCount: 60,
+          spread: 80,
+          origin: { y: 0.7 },
+          colors: ['#ff4d6d', '#ff758c', '#ffd166', '#ffffff']
         });
       }
-    });
-  }
-
-  if (btnKiss) {
-    btnKiss.addEventListener("click", () => {
-      showSweetToast(`Chụtttt! Gửi tới ${CONFIG.loverName} ngàn nụ hôn nồng cháy nhất 💋`, "😘");
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 15; i++) {
         createFloatingHeart();
       }
     });

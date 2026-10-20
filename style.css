@@ -1259,11 +1259,59 @@ body {
   margin-bottom: 28px;
 }
 
-.gift-action-buttons {
-  display: flex;
+.gift-love-declaration {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 16px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 12px 32px;
+  max-width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, rgba(255, 77, 109, 0.12), rgba(255, 142, 179, 0.22));
+  border-radius: 50px;
+  border: 1.5px solid rgba(255, 77, 109, 0.35);
+  box-shadow: 0 8px 25px rgba(255, 77, 109, 0.22);
+  cursor: pointer;
+  user-select: none;
+  animation: pulseLove 2.2s infinite ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gift-love-declaration:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 12px 32px rgba(255, 77, 109, 0.35);
+}
+
+.gift-love-declaration .love-text {
+  font-family: var(--font-title);
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  background: linear-gradient(45deg, #e63946, #ff4d6d, #ff758c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+
+.gift-love-declaration .love-heart {
+  font-size: 1.8rem;
+  display: inline-block;
+  animation: heartPulse 1.2s infinite ease-in-out;
+}
+
+@keyframes pulseLove {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 8px 25px rgba(255, 77, 109, 0.22);
+  }
+  50% {
+    transform: scale(1.025);
+    box-shadow: 0 14px 34px rgba(255, 77, 109, 0.36);
+  }
 }
 
 /* ==============================================================
@@ -1675,16 +1723,19 @@ body {
     border-radius: 20px;
   }
 
-  .gift-action-buttons {
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
+  .gift-love-declaration {
+    padding: 8px 18px;
+    gap: 8px;
+    max-width: 95%;
   }
 
-  .gift-action-buttons .btn-romantic-glow,
-  .gift-action-buttons .btn-secondary-glow {
-    width: 100%;
-    justify-content: center;
+  .gift-love-declaration .love-text {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  .gift-love-declaration .love-heart {
+    font-size: 1.2rem;
   }
 
   /* --- Toast --- */
