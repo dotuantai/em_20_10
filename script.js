@@ -66,22 +66,22 @@ Anh yêu em nhiều lắm! 💗`,
   // Bạn có thể thay bằng link ảnh thật của hai người
   memories: [
     {
-      url: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600&auto=format&fit=crop",
+      url: "images/photo1.jpg",
       caption: "Khoảnh khắc ngọt ngào bên em 💕",
       date: "Kỷ niệm ngày bên nhau"
     },
     {
-      url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600&auto=format&fit=crop",
+      url: "images/photo2.jpg",
       caption: "Nụ cười của em là bình yên của anh 🌸",
       date: "Những chuyến đi đáng nhớ"
     },
     {
-      url: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=600&auto=format&fit=crop",
+      url: "images/photo3.jpg",
       caption: "Nắm tay em đi qua mọi mùa yêu thương 🤝",
       date: "Hạnh phúc giản đơn"
     },
     {
-      url: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=600&auto=format&fit=crop",
+      url: "images/photo4.png",
       caption: "20/10 ngập tràn niềm vui nhé công chúa 💖",
       date: "20.10.2026"
     }
