@@ -361,9 +361,10 @@ function initIntroEnvelope() {
 
       setTimeout(() => {
         introScreen.style.display = "none";
-        // Khởi động Trái Tim 3D Three.js và Lời chúc gõ chữ Typewriter
+        // Khởi động Trái Tim 3D Three.js
         initThreeHeart();
-        startTypewriter();
+        // Typewriter sẽ tự kích hoạt khi scroll đến phần thư
+        initLetterScrollTrigger();
       }, 1000);
     }, 1400);
   }
@@ -584,6 +585,7 @@ function createFloatingHeart() {
 let typewriterTimer = null;
 let currentLetterIdx = 0;
 let isTyping = false;
+let typewriterHasStarted = false; // Đảm bảo chỉ tự động bắt đầu 1 lần khi scroll vào
 
 function startTypewriter() {
   const textEl = document.getElementById("typewriter-text");
@@ -593,6 +595,7 @@ function startTypewriter() {
   textEl.textContent = "";
   currentLetterIdx = 0;
   isTyping = true;
+  typewriterHasStarted = true;
 
   const fullText = CONFIG.wishLetter;
   const speed = 40; // Tốc độ gõ mỗi ký tự (ms)
@@ -613,6 +616,7 @@ function startTypewriter() {
 
   if (btnReplay) {
     btnReplay.onclick = () => {
+      typewriterHasStarted = false; // Cho phép replay lại
       startTypewriter();
     };
   }
@@ -624,6 +628,37 @@ function startTypewriter() {
       isTyping = false;
     };
   }
+}
+
+// Kích hoạt typewriter khi scroll đến phần thư tình (IntersectionObserver)
+function initLetterScrollTrigger() {
+  const letterSection = document.querySelector(".letter-section");
+  if (!letterSection) return;
+
+  // Fallback nếu trình duyệt cũ không hỗ trợ IntersectionObserver
+  if (!('IntersectionObserver' in window)) {
+    startTypewriter();
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        // Chỉ kích hoạt lần đầu tiên khi phần thư hiển thị ít nhất 30% trên màn hình
+        if (entry.isIntersecting && !typewriterHasStarted) {
+          startTypewriter();
+          // Sau khi đã trigger, không cần observe nữa
+          observer.unobserve(letterSection);
+        }
+      });
+    },
+    {
+      threshold: 0.3, // 30% phần thư phải nằm trong viewport
+      rootMargin: '0px 0px -50px 0px' // Thêm khoảng trừ ở đáy để đẹp hơn
+    }
+  );
+
+  observer.observe(letterSection);
 }
 
 // ==========================================================================
