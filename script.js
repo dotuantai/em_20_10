@@ -1,112 +1,112 @@
-﻿/* ==========================================================================
-   WEBSITE CHÃšC Má»ªNG 20/10 - DÃ€NH RIÃŠNG CHO Má»¸ HÃ’A â¤ï¸
-   CÃ´ng nghá»‡: HTML5, CSS3, JavaScript Thuáº§n, Three.js & Canvas Confetti
+/* ==========================================================================
+   WEBSITE CHÚC MỪNG 20/10 - DÀNH RIÊNG CHO MỸ HÒA ❤️
+   Công nghệ: HTML5, CSS3, JavaScript Thuần, Three.js & Canvas Confetti
    ========================================================================== */
 
 // ==========================================================================
-// 1. KHU Vá»°C Cáº¤U HÃŒNH CÃ NHÃ‚N HÃ“A (Dá»„ DÃ€NG CHá»ˆNH Sá»¬A Táº I ÄÃ‚Y)
+// 1. KHU VỰC CẤU HÌNH CÁ NHÂN HÓA (DỄ DÀNG CHỈNH SỬA TẠI ĐÂY)
 // ==========================================================================
 const CONFIG = {
-  // TÃªn ngÆ°á»i nháº­n vÃ  ngÆ°á»i gá»­i
-  loverName: "Má»¹ HÃ²a",                 // TÃªn ngÆ°á»i yÃªu cá»§a báº¡n
-  loverNickname: "CÃ´ng chÃºa Má»¹ HÃ²a",   // Biá»‡t danh Ä‘Ã¡ng yÃªu
-  senderName: "Anh cá»§a em",            // TÃªn cá»§a báº¡n
-  
-  // NgÃ y ká»· niá»‡m yÃªu nhau (Äá»‹nh dáº¡ng: YYYY-MM-DDTHH:MM:SS)
-  // Báº¡n cÃ³ thá»ƒ Ä‘á»•i ngÃ y báº¯t Ä‘áº§u yÃªu nhau á»Ÿ Ä‘Ã¢y
+  // Tên người nhận và người gửi
+  loverName: "Mỹ Hòa",                 // Tên người yêu của bạn
+  loverNickname: "Công chúa Mỹ Hòa",   // Biệt danh đáng yêu
+  senderName: "Anh của em",            // Tên của bạn
+
+  // Ngày kỷ niệm yêu nhau (Định dạng: YYYY-MM-DDTHH:MM:SS)
+  // Bạn có thể đổi ngày bắt đầu yêu nhau ở đây
   anniversaryDate: "2026-09-03T08:00:00",
 
-  // Lá»i chÃºc 20/10 hiá»ƒn thá»‹ dáº¡ng gÃµ mÃ¡y chá»¯
-  wishLetter: 
-`ChÃºc cÃ´ng chÃºa cá»§a anh má»™t ngÃ y 20/10 tháº­t háº¡nh phÃºc â¤ï¸
+  // Lời chúc 20/10 hiển thị dạng gõ máy chữ
+  wishLetter:
+`Chúc công chúa của anh một ngày 20/10 thật hạnh phúc ❤️
 
-Cáº£m Æ¡n em vÃ¬ Ä‘Ã£ xuáº¥t hiá»‡n trong cuá»™c Ä‘á»i anh, mang Ä‘áº¿n cho anh nhá»¯ng ná»¥ cÆ°á»i vÃ  nhá»¯ng khoáº£nh kháº¯c tháº­t Ä‘áº·c biá»‡t.
+Cảm ơn em vì đã xuất hiện trong cuộc đời anh, mang đến cho anh những nụ cười và những khoảnh khắc thật đặc biệt.
 
-Anh mong em luÃ´n xinh Ä‘áº¹p, vui váº», bÃ¬nh an vÃ  luÃ´n Ä‘Æ°á»£c yÃªu thÆ°Æ¡ng. DÃ¹ ngoÃ i kia cÃ³ bao nhiÃªu Ä‘iá»u má»‡t má»i, anh váº«n mong mÃ¬nh sáº½ lÃ  ngÆ°á»i khiáº¿n em má»‰m cÆ°á»i má»—i ngÃ y.
+Anh mong em luôn xinh đẹp, vui vẻ, bình an và luôn được yêu thương. Dù ngoài kia có bao nhiêu điều mệt mỏi, anh vẫn mong mình sẽ là người khiến em mỉm cười mỗi ngày.
 
-NgÃ y 20/10 nÃ y, anh khÃ´ng cÃ³ mÃ³n quÃ  gÃ¬ quÃ¡ lá»›n lao, chá»‰ cÃ³ má»™t trÃ¡i tim luÃ´n dÃ nh má»™t vá»‹ trÃ­ Ä‘áº·c biá»‡t cho em.
+Ngày 20/10 này, anh không có món quà gì quá lớn lao, chỉ có một trái tim luôn dành một vị trí đặc biệt cho em.
 
-Anh yÃªu em nhiá»u láº¯m! ðŸ’—`,
+Anh yêu em nhiều lắm! 💗`,
 
-  // Danh sÃ¡ch cÃ¡c bÃ´ng hoa trong Khu VÆ°á»n BÃ­ Máº­t
+  // Danh sách các bông hoa trong Khu Vườn Bí Mật
   flowers: [
     {
       id: "rose",
-      name: "Hoa Há»“ng Äá»",
-      icon: "ðŸŒ¹",
-      message: "Em lÃ  bÃ´ng hoa Ä‘áº¹p nháº¥t, ráº¡ng rá»¡ vÃ  quyáº¿n rÅ© nháº¥t trong khu vÆ°á»n trÃ¡i tim anh. YÃªu em vÃ´ bá» báº¿n! ðŸŒ¹"
+      name: "Hoa Hồng Đỏ",
+      icon: "🌹",
+      message: "Em là bông hoa đẹp nhất, rạng rỡ và quyến rũ nhất trong khu vườn trái tim anh. Yêu em vô bờ bến! 🌹"
     },
     {
       id: "tulip",
-      name: "Hoa Tulip Há»“ng",
-      icon: "ðŸŒ·",
-      message: "Hoa tulip tÆ°á»£ng trÆ°ng cho tÃ¬nh yÃªu thuáº§n khiáº¿t. TÃ¬nh cáº£m anh dÃ nh cho Má»¹ HÃ²a mÃ£i váº¹n nguyÃªn vÃ  chÃ¢n thÃ nh nhÆ° ngÃ y Ä‘áº§u. ðŸŒ·"
+      name: "Hoa Tulip Hồng",
+      icon: "🌷",
+      message: "Hoa tulip tượng trưng cho tình yêu thuần khiết. Tình cảm anh dành cho Mỹ Hòa mãi vẹn nguyên và chân thành như ngày đầu. 🌷"
     },
     {
       id: "sunflower",
-      name: "Hoa HÆ°á»›ng DÆ°Æ¡ng",
-      icon: "ðŸŒ»",
-      message: "NhÆ° hoa hÆ°á»›ng dÆ°Æ¡ng luÃ´n hÆ°á»›ng vá» váº§ng thÃ¡i dÆ°Æ¡ng, Ã¡nh máº¯t vÃ  trÃ¡i tim anh sáº½ luÃ´n dÃµi theo vÃ  che chá»Ÿ cho em. ðŸŒ»"
+      name: "Hoa Hướng Dương",
+      icon: "🌻",
+      message: "Như hoa hướng dương luôn hướng về vầng thái dương, ánh mắt và trái tim anh sẽ luôn dõi theo và che chở cho em. 🌻"
     },
     {
       id: "cherry",
-      name: "Hoa Anh ÄÃ o",
-      icon: "ðŸŒ¸",
-      message: "Ná»¥ cÆ°á»i cá»§a Má»¹ HÃ²a ngá»t ngÃ o vÃ  dá»‹u dÃ ng nhÆ° nhá»¯ng cÃ¡nh hoa anh Ä‘Ã o Ä‘áº§u xuÃ¢n, lÃ m bá»«ng sÃ¡ng cáº£ tháº¿ giá»›i cá»§a anh. ðŸŒ¸"
+      name: "Hoa Anh Đào",
+      icon: "🌸",
+      message: "Nụ cười của Mỹ Hòa ngọt ngào và dịu dàng như những cánh hoa anh đào đầu xuân, làm bừng sáng cả thế giới của anh. 🌸"
     },
     {
       id: "bouquet",
-      name: "BÃ³ Hoa TÃ¬nh YÃªu",
-      icon: "ðŸ’",
-      message: "DÃ nh táº·ng cáº£ vÆ°á»n hoa rá»±c rá»¡ nÃ y cho ngÆ°á»i phá»¥ ná»¯ tuyá»‡t vá»i nháº¥t trong lÃ²ng anh ngÃ y 20/10! ðŸ’"
+      name: "Bó Hoa Tình Yêu",
+      icon: "💐",
+      message: "Dành tặng cả vườn hoa rực rỡ này cho người phụ nữ tuyệt vời nhất trong lòng anh ngày 20/10! 💐"
     }
   ],
 
-  // Danh sÃ¡ch áº£nh ká»· niá»‡m (Dáº¡ng Polaroid 3D)
-  // Báº¡n cÃ³ thá»ƒ thay báº±ng link áº£nh tháº­t cá»§a hai ngÆ°á»i
+  // Danh sách ảnh kỷ niệm (Dạng Polaroid 3D)
+  // Bạn có thể thay bằng link ảnh thật của hai người
   memories: [
     {
       url: "images/photo1.jpg",
-      caption: "Khoáº£nh kháº¯c ngá»t ngÃ o bÃªn em ðŸ’•",
-      date: "Ká»· niá»‡m ngÃ y bÃªn nhau"
+      caption: "Khoảnh khắc ngọt ngào bên em 💕",
+      date: "Kỷ niệm ngày bên nhau"
     },
     {
       url: "images/photo2.jpg",
-      caption: "Ná»¥ cÆ°á»i cá»§a em lÃ  bÃ¬nh yÃªn cá»§a anh ðŸŒ¸",
-      date: "Nhá»¯ng chuyáº¿n Ä‘i Ä‘Ã¡ng nhá»›"
+      caption: "Nụ cười của em là bình yên của anh 🌸",
+      date: "Những chuyến đi đáng nhớ"
     },
     {
       url: "images/photo3.jpg",
-      caption: "Náº¯m tay em Ä‘i qua má»i mÃ¹a yÃªu thÆ°Æ¡ng ðŸ¤",
-      date: "Háº¡nh phÃºc giáº£n Ä‘Æ¡n"
+      caption: "Nắm tay em đi qua mọi mùa yêu thương 🤝",
+      date: "Hạnh phúc giản đơn"
     },
     {
       url: "images/photo4.png",
-      caption: "20/10 ngáº­p trÃ n niá»m vui nhÃ© cÃ´ng chÃºa ðŸ’–",
+      caption: "20/10 ngập tràn niềm vui nhé công chúa 💖",
       date: "20.10.2026"
     }
   ],
 
-  // Nháº¡c ná»n (Link dá»± phÃ²ng an toÃ n)
+  // Nhạc nền (Link dự phòng an toàn)
   musicUrl: "https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6591201e.mp3?filename=romantic-piano-111164.mp3"
 };
 
 // ==========================================================================
-// 2. KHá»žI Táº O Dá»® LIá»†U CÃ NHÃ‚N VÃ€O GIAO DIá»†N
+// 2. KHỞI TẠO DỮ LIỆU CÁ NHÂN VÀO GIAO DIỆN
 // ==========================================================================
 document.addEventListener("DOMContentLoaded", () => {
-  // Cáº­p nháº­t tÃªn ngÆ°á»i yÃªu & ngÆ°á»i gá»­i lÃªn giao diá»‡n
+  // Cập nhật tên người yêu & người gửi lên giao diện
   const introTo = document.getElementById("intro-to-name");
   const mainLoverName = document.getElementById("main-lover-name");
   const mainSenderCredit = document.getElementById("main-sender-credit");
   const letterSenderName = document.getElementById("letter-sender-name");
 
-  if (introTo) introTo.textContent = `Gá»­i: ${CONFIG.loverName} ðŸ’–`;
+  if (introTo) introTo.textContent = `Gửi: ${CONFIG.loverName} 💖`;
   if (mainLoverName) mainLoverName.textContent = CONFIG.loverName;
-  if (mainSenderCredit) mainSenderCredit.textContent = `From ${CONFIG.senderName}, with all my love â¤ï¸`;
-  if (letterSenderName) letterSenderName.textContent = `${CONFIG.senderName} â¤ï¸`;
+  if (mainSenderCredit) mainSenderCredit.textContent = `From ${CONFIG.senderName}, with all my love ❤️`;
+  if (letterSenderName) letterSenderName.textContent = `${CONFIG.senderName} ❤️`;
 
-  // Khá»Ÿi Ä‘á»™ng cÃ¡c module
+  // Khởi động các module
   initBackgroundCanvas();
   initIntroEnvelope();
   initAudioPlayer();
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================================================
-// 3. SOUND SYNTHESIZER (Web Audio API - LuÃ´n hoáº¡t Ä‘á»™ng khÃ´ng cáº§n file Ã¢m thanh)
+// 3. SOUND SYNTHESIZER (Web Audio API - Luôn hoạt động không cần file âm thanh)
 // ==========================================================================
 let audioCtx = null;
 
@@ -139,8 +139,8 @@ function playSweetChime() {
   const ctx = getAudioContext();
   if (!ctx) return;
   const now = ctx.currentTime;
-  const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6 (Há»£p Ã¢m ÄÃ´ trÆ°á»Ÿng ngá»t ngÃ o)
-  
+  const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6 (Hợp âm Đô trưởng ngọt ngào)
+
   notes.forEach((freq, idx) => {
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
@@ -173,12 +173,12 @@ function playPopSound() {
 }
 
 function initAudioSynthesizer() {
-  // KÃ­ch hoáº¡t khi cÃ³ tÆ°Æ¡ng tÃ¡c Ä‘áº§u tiÃªn cá»§a ngÆ°á»i dÃ¹ng
+  // Kích hoạt khi có tương tác đầu tiên của người dùng
   document.addEventListener("click", () => getAudioContext(), { once: true });
 }
 
 // ==========================================================================
-// 4. HIá»†U á»¨NG Ná»€N CANVAS (CÃNH HOA Há»’NG & SAO TRá»œI & ÄOM ÄÃ“M)
+// 4. HIỆU ỨNG NỀN CANVAS (CÁNH HOA HỒNG & SAO TRỜI & ĐOM ĐÓM)
 // ==========================================================================
 let bgCanvas, bgCtx;
 let particles = [];
@@ -197,7 +197,7 @@ function initBackgroundCanvas() {
   resizeCanvas();
   window.addEventListener("resize", resizeCanvas);
 
-  // Táº¡o cÃ¡c ngÃ´i sao láº¥p lÃ¡nh & háº¡t Ä‘om Ä‘Ã³m
+  // Tạo các ngôi sao lấp lánh & hạt đom đóm
   const particleCount = Math.min(window.innerWidth > 768 ? 60 : 35, 70);
   for (let i = 0; i < particleCount; i++) {
     particles.push({
@@ -210,7 +210,7 @@ function initBackgroundCanvas() {
     });
   }
 
-  // Táº¡o cÃ¡c cÃ¡nh hoa há»“ng rÆ¡i (Rose Petals)
+  // Tạo các cánh hoa hồng rơi (Rose Petals)
   const petalCount = window.innerWidth > 768 ? 25 : 15;
   for (let i = 0; i < petalCount; i++) {
     petals.push(createPetal());
@@ -218,13 +218,13 @@ function initBackgroundCanvas() {
 
   animateBackground();
 
-  // NÃºt báº­t/táº¯t hiá»‡u á»©ng
+  // Nút bật/tắt hiệu ứng
   const toggleBtn = document.getElementById("hearts-toggle");
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
       isHeartsEffectEnabled = !isHeartsEffectEnabled;
       const tooltip = toggleBtn.querySelector(".btn-tooltip");
-      if (tooltip) tooltip.textContent = `Hiá»‡u á»©ng: ${isHeartsEffectEnabled ? 'Báº­t' : 'Táº¯t'}`;
+      if (tooltip) tooltip.textContent = `Hiệu ứng: ${isHeartsEffectEnabled ? 'Bật' : 'Tắt'}`;
       toggleBtn.style.opacity = isHeartsEffectEnabled ? "1" : "0.5";
     });
   }
@@ -249,7 +249,7 @@ function animateBackground() {
   if (!bgCtx || !bgCanvas) return;
   bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
 
-  // Váº½ cÃ¡c háº¡t sao / Ä‘om Ä‘Ã³m
+  // Vẽ các hạt sao / đom đóm
   particles.forEach(p => {
     p.alpha += p.speed;
     const currentAlpha = (Math.sin(p.alpha) + 1) / 2;
@@ -264,7 +264,7 @@ function animateBackground() {
     bgCtx.restore();
   });
 
-  // Váº½ cÃ¡nh hoa há»“ng rÆ¡i náº¿u Ä‘Æ°á»£c báº­t
+  // Vẽ cánh hoa hồng rơi nếu được bật
   if (isHeartsEffectEnabled) {
     petals.forEach(pt => {
       pt.y += pt.speedY;
@@ -282,7 +282,7 @@ function animateBackground() {
       bgCtx.fillStyle = pt.color;
       bgCtx.globalAlpha = 0.7;
 
-      // Váº½ hÃ¬nh dáº¡ng cÃ¡nh hoa há»“ng cong má»m
+      // Vẽ hình dạng cánh hoa hồng cong mềm
       bgCtx.beginPath();
       bgCtx.moveTo(0, 0);
       bgCtx.bezierCurveTo(-pt.size / 2, -pt.size / 2, -pt.size, pt.size / 3, 0, pt.size);
@@ -297,7 +297,7 @@ function animateBackground() {
 }
 
 // ==========================================================================
-// 5. MÃ€N HÃŒNH Má»ž Äáº¦U - PHONG BÃŒ THÆ¯ TÃŒNH
+// 5. MÀN HÌNH MỞ ĐẦU - PHONG BÌ THƯ TÌNH
 // ==========================================================================
 function initIntroEnvelope() {
   const introScreen = document.getElementById("intro-screen");
@@ -312,10 +312,10 @@ function initIntroEnvelope() {
     if (isOpened) return;
     isOpened = true;
 
-    // Ã‚m thanh ngá»t ngÃ o
+    // Âm thanh ngọt ngào
     playSweetChime();
 
-    // Má»Ÿ nháº¡c ná»n
+    // Mở nhạc nền
     if (bgAudio) {
       bgAudio.volume = 0.6;
       bgAudio.play().catch(() => {
@@ -323,10 +323,10 @@ function initIntroEnvelope() {
       });
     }
 
-    // Animation má»Ÿ phong bÃ¬
+    // Animation mở phong bì
     envelope.classList.add("open");
 
-    // PhÃ¡o hoa trÃ¡i tim bung tá»a rá»±c rá»¡
+    // Pháo hoa trái tim bung tỏa rực rỡ
     if (window.confetti) {
       confetti({
         particleCount: 80,
@@ -353,7 +353,7 @@ function initIntroEnvelope() {
       }, 300);
     }
 
-    // Chuyá»ƒn cáº£nh mÆ°á»£t mÃ  sang mÃ n hÃ¬nh chÃ­nh
+    // Chuyển cảnh mượt mà sang màn hình chính
     setTimeout(() => {
       introScreen.classList.add("fade-out");
       mainContent.classList.remove("hidden");
@@ -361,7 +361,7 @@ function initIntroEnvelope() {
 
       setTimeout(() => {
         introScreen.style.display = "none";
-        // Typewriter sáº½ tá»± kÃ­ch hoáº¡t khi scroll Ä‘áº¿n pháº§n thÆ°
+        // Typewriter sẽ tự kích hoạt khi scroll đến phần thư
         initLetterScrollTrigger();
       }, 1000);
     }, 1400);
@@ -372,12 +372,12 @@ function initIntroEnvelope() {
 }
 
 // ==========================================================================
-// 7. HIá»†U á»¨NG GÃ• CHá»® (TYPEWRITER) CHO Bá»¨C THÆ¯ TÃŒNH
+// 7. HIỆU ỨNG GÕ CHỮ (TYPEWRITER) CHO BỨC THƯ TÌNH
 // ==========================================================================
 let typewriterTimer = null;
 let currentLetterIdx = 0;
 let isTyping = false;
-let typewriterHasStarted = false; // Äáº£m báº£o chá»‰ tá»± Ä‘á»™ng báº¯t Ä‘áº§u 1 láº§n khi scroll vÃ o
+let typewriterHasStarted = false; // Đảm bảo chỉ tự động bắt đầu 1 lần khi scroll vào
 
 function startTypewriter() {
   const textEl = document.getElementById("typewriter-text");
@@ -390,7 +390,7 @@ function startTypewriter() {
   typewriterHasStarted = true;
 
   const fullText = CONFIG.wishLetter;
-  const speed = 40; // Tá»‘c Ä‘á»™ gÃµ má»—i kÃ½ tá»± (ms)
+  const speed = 40; // Tốc độ gõ mỗi ký tự (ms)
 
   typewriterTimer = setInterval(() => {
     if (currentLetterIdx < fullText.length) {
@@ -402,13 +402,13 @@ function startTypewriter() {
     }
   }, speed);
 
-  // NÃºt báº¥m tÆ°Æ¡ng tÃ¡c cá»§a thÆ°
+  // Nút bấm tương tác của thư
   const btnReplay = document.getElementById("btn-replay-letter");
   const btnShowAll = document.getElementById("btn-show-full-letter");
 
   if (btnReplay) {
     btnReplay.onclick = () => {
-      typewriterHasStarted = false; // Cho phÃ©p replay láº¡i
+      typewriterHasStarted = false; // Cho phép replay lại
       startTypewriter();
     };
   }
@@ -422,12 +422,12 @@ function startTypewriter() {
   }
 }
 
-// KÃ­ch hoáº¡t typewriter khi scroll Ä‘áº¿n pháº§n thÆ° tÃ¬nh (IntersectionObserver)
+// Kích hoạt typewriter khi scroll đến phần thư tình (IntersectionObserver)
 function initLetterScrollTrigger() {
   const letterSection = document.querySelector(".letter-section");
   if (!letterSection) return;
 
-  // Fallback náº¿u trÃ¬nh duyá»‡t cÅ© khÃ´ng há»— trá»£ IntersectionObserver
+  // Fallback nếu trình duyệt cũ không hỗ trợ IntersectionObserver
   if (!('IntersectionObserver' in window)) {
     startTypewriter();
     return;
@@ -436,17 +436,17 @@ function initLetterScrollTrigger() {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach(entry => {
-        // Chá»‰ kÃ­ch hoáº¡t láº§n Ä‘áº§u tiÃªn khi pháº§n thÆ° hiá»ƒn thá»‹ Ã­t nháº¥t 30% trÃªn mÃ n hÃ¬nh
+        // Chỉ kích hoạt lần đầu tiên khi phần thư hiển thị ít nhất 30% trên màn hình
         if (entry.isIntersecting && !typewriterHasStarted) {
           startTypewriter();
-          // Sau khi Ä‘Ã£ trigger, khÃ´ng cáº§n observe ná»¯a
+          // Sau khi đã trigger, không cần observe nữa
           observer.unobserve(letterSection);
         }
       });
     },
     {
-      threshold: 0.3, // 30% pháº§n thÆ° pháº£i náº±m trong viewport
-      rootMargin: '0px 0px -50px 0px' // ThÃªm khoáº£ng trá»« á»Ÿ Ä‘Ã¡y Ä‘á»ƒ Ä‘áº¹p hÆ¡n
+      threshold: 0.3, // 30% phần thư phải nằm trong viewport
+      rootMargin: '0px 0px -50px 0px' // Thêm khoảng trễ ở đáy để đẹp hơn
     }
   );
 
@@ -454,7 +454,7 @@ function initLetterScrollTrigger() {
 }
 
 // ==========================================================================
-// 8. Äá»’NG Há»’ Äáº¾M NGÃ€Y YÃŠU NHAU (LOVE DAYS COUNTER)
+// 8. ĐỒNG HỒ ĐẾM NGÀY YÊU NHAU (LOVE DAYS COUNTER)
 // ==========================================================================
 function initLoveCounter() {
   const daysEl = document.getElementById("days-val");
@@ -484,7 +484,7 @@ function initLoveCounter() {
 }
 
 // ==========================================================================
-// 9. KHU VÆ¯á»œN HOA TÃŒNH YÃŠU (INTERACTIVE SECRET GARDEN)
+// 9. KHU VƯỜN HOA TÌNH YÊU (INTERACTIVE SECRET GARDEN)
 // ==========================================================================
 function initGarden() {
   const gardenContainer = document.getElementById("flower-garden");
@@ -542,7 +542,7 @@ function initGarden() {
 }
 
 // ==========================================================================
-// 10. ALBUM Ká»¶ NIá»†M POLAROID 3D
+// 10. ALBUM KỶ NIỆM POLAROID 3D
 // ==========================================================================
 function initPolaroidGallery() {
   const gallery = document.getElementById("polaroid-gallery");
@@ -586,7 +586,7 @@ function initPolaroidGallery() {
 }
 
 // ==========================================================================
-// 11. Há»˜P QUÃ€ BÃ Máº¬T & NÃšT Ã”M / HÃ”N
+// 11. HỘP QUÀ BÍ MẬT & NÚT ÔM / HÔN
 // ==========================================================================
 function initMysteryGiftBox() {
   const giftBox = document.getElementById("mystery-gift-box");
@@ -620,7 +620,7 @@ function initMysteryGiftBox() {
     });
   }
 
-  function showSweetToast(message, icon = "ðŸ¥°") {
+  function showSweetToast(message, icon = "🥰") {
     if (!sweetToast || !toastText) return;
     toastText.textContent = message;
     const toastIcon = sweetToast.querySelector(".toast-icon");
@@ -636,7 +636,7 @@ function initMysteryGiftBox() {
 
   if (btnHug) {
     btnHug.addEventListener("click", () => {
-      showSweetToast(`Anh Ã´m ${CONFIG.loverName} tháº­t cháº·t vÃ o lÃ²ng nÃ¨! YÃªu em nháº¥t quáº£ Ä‘áº¥t! ðŸ¥°`, "ðŸ«‚");
+      showSweetToast(`Anh ôm ${CONFIG.loverName} thật chặt vào lòng nè! Yêu em nhất quả đất! 🥰`, "🫂");
       if (window.confetti) {
         confetti({
           particleCount: 40,
@@ -649,7 +649,7 @@ function initMysteryGiftBox() {
 
   if (btnKiss) {
     btnKiss.addEventListener("click", () => {
-      showSweetToast(`Chá»¥ttt! Gá»­i tá»›i ${CONFIG.loverName} ngÃ n ná»¥ hÃ´n ná»“ng chÃ¡y nháº¥t ðŸ’‹`, "ðŸ˜˜");
+      showSweetToast(`Chụtttt! Gửi tới ${CONFIG.loverName} ngàn nụ hôn nồng cháy nhất 💋`, "😘");
       for (let i = 0; i < 20; i++) {
         createFloatingHeart();
       }
@@ -658,7 +658,7 @@ function initMysteryGiftBox() {
 }
 
 // ==========================================================================
-// 12. FLOATING AUDIO PLAYER (Báº¬T / Táº®T NHáº C)
+// 12. FLOATING AUDIO PLAYER (BẬT / TẮT NHẠC)
 // ==========================================================================
 function initAudioPlayer() {
   const musicToggle = document.getElementById("music-toggle");
@@ -673,22 +673,58 @@ function initAudioPlayer() {
     if (bgAudio.paused) {
       bgAudio.play().then(() => {
         if (discIcon) discIcon.classList.remove("disc-paused");
-        if (tooltip) tooltip.textContent = "Nháº¡c ná»n: Báº­t";
+        if (tooltip) tooltip.textContent = "Nhạc nền: Bật";
       }).catch(err => console.log("Audio play error:", err));
     } else {
       bgAudio.pause();
       if (discIcon) discIcon.classList.add("disc-paused");
-      if (tooltip) tooltip.textContent = "Nháº¡c ná»n: Táº¯t";
+      if (tooltip) tooltip.textContent = "Nhạc nền: Tắt";
     }
   });
 
   bgAudio.addEventListener("play", () => {
     if (discIcon) discIcon.classList.remove("disc-paused");
-    if (tooltip) tooltip.textContent = "Nháº¡c ná»n: Báº­t";
+    if (tooltip) tooltip.textContent = "Nhạc nền: Bật";
   });
 
   bgAudio.addEventListener("pause", () => {
     if (discIcon) discIcon.classList.add("disc-paused");
-    if (tooltip) tooltip.textContent = "Nháº¡c ná»n: Táº¯t";
+    if (tooltip) tooltip.textContent = "Nhạc nền: Tắt";
   });
 }
+
+// ==========================================================================
+// 13. FLOATING HEARTS (Trái tim bay khi nhấn nút hôn)
+// ==========================================================================
+function createFloatingHeart() {
+  const heart = document.createElement("div");
+  heart.style.cssText = `
+    position: fixed;
+    font-size: ${Math.random() * 20 + 16}px;
+    left: ${Math.random() * 100}vw;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 9999;
+    animation: floatUp ${Math.random() * 2 + 2}s ease-out forwards;
+    opacity: 1;
+  `;
+  heart.textContent = ["❤️", "💕", "💖", "💗", "💓"][Math.floor(Math.random() * 5)];
+  document.body.appendChild(heart);
+
+  // Tự xóa sau khi animation kết thúc
+  setTimeout(() => heart.remove(), 4000);
+}
+
+// Thêm keyframes floatUp vào document nếu chưa có
+(function injectFloatUpKeyframe() {
+  if (document.getElementById("floatup-style")) return;
+  const style = document.createElement("style");
+  style.id = "floatup-style";
+  style.textContent = `
+    @keyframes floatUp {
+      0%   { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-80vh) scale(0.5); opacity: 0; }
+    }
+  `;
+  document.head.appendChild(style);
+})();
