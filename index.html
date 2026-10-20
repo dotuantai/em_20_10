@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Gửi Mỹ Hòa Yêu Dấu - Chúc Mừng 20/10 ❤️</title>
+  <meta name="description" content="Món quà tình yêu ngọt ngào, lãng mạn dành riêng cho Mỹ Hòa nhân ngày Phụ Nữ Việt Nam 20/10.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
+
+  <!-- Google Fonts: Nghệ thuật, viết tay, hiện đại -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Pacifico&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Particle & Petals Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Floating Audio & Controls Bar -->
+  <div class="floating-controls">
+    <button id="music-toggle" class="control-btn" title="Bật/Tắt nhạc nền" aria-label="Bật hoặc tắt nhạc nền">
+      <i class="fa-solid fa-compact-disc disc-spin"></i>
+      <span class="btn-tooltip">Nhạc nền: Bật</span>
+    </button>
+    <button id="hearts-toggle" class="control-btn" title="Hiệu ứng trái tim rơi" aria-label="Bật hoặc tắt hiệu ứng trái tim">
+      <i class="fa-solid fa-heart-pulse"></i>
+      <span class="btn-tooltip">Hiệu ứng: Bật</span>
+    </button>
+  </div>
+
+  <!-- Audio Element (Giai điệu piano lãng mạn) -->
+  <audio id="bg-audio" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6591201e.mp3?filename=romantic-piano-111164.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- ============================================== -->
+  <!-- MÀN HÌNH 1: MÀN HÌNH MỞ ĐẦU - PHONG BÌ THƯ TÌNH -->
+  <!-- ============================================== -->
+  <section id="intro-screen" class="intro-overlay">
+    <div class="envelope-wrapper">
+      <div class="sparkles-container" id="envelope-sparkles"></div>
+      
+      <div class="intro-heading">
+        <span class="badge-tag">💌 Special Delivery</span>
+        <h1 class="intro-title">Có một món quà nhỏ dành riêng cho em</h1>
+        <p class="intro-recipient" id="intro-to-name">Gửi: Mỹ Hòa 💖</p>
+      </div>
+
+      <!-- Phong bì thư 3D CSS -->
+      <div class="envelope" id="envelope">
+        <div class="envelope-back"></div>
+        <div class="letter-preview">
+          <div class="letter-mini-stamp">🌹 20/10</div>
+          <div class="letter-mini-text">To: Mỹ Hòa</div>
+          <div class="letter-mini-heart">❤</div>
+        </div>
+        <div class="envelope-pocket"></div>
+        <div class="envelope-flap" id="envelope-flap">
+          <div class="wax-seal" id="wax-seal">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+        </div>
+      </div>
+
+      <button id="btn-open-gift" class="btn-romantic-glow">
+        <span>Mở quà đi em ❤️</span>
+        <i class="fa-solid fa-sparkles"></i>
+      </button>
+
+      <p class="intro-hint">Nhấn nút để mở bức thư tình gửi trao nàng thơ 20/10 ✨</p>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- MÀN HÌNH 2: TRẢI NGHIỆM CHÍNH -->
+  <!-- ============================================== -->
+  <main id="main-content" class="main-container hidden">
+
+    <!-- HERO HEADER -->
+    <header class="hero-section">
+      <div class="tag-pill">✨ Happy Vietnamese Women's Day ✨</div>
+      <h1 class="main-title">
+        Chúc Mừng 20/10 <span class="highlight-name" id="main-lover-name">Mỹ Hòa</span>
+      </h1>
+      <p class="sub-title" id="main-sender-credit">From Anh, with all my love ❤️</p>
+
+      <!-- ĐỒNG HỒ ĐẾM NGÀY YÊU NHAU -->
+      <div class="love-counter-card">
+        <div class="counter-header">
+          <i class="fa-solid fa-heart-circle-bolt heart-beat-fast"></i>
+          <span>Chúng mình đã yêu nhau được</span>
+          <i class="fa-solid fa-heart-circle-bolt heart-beat-fast"></i>
+        </div>
+        <div class="counter-grid">
+          <div class="counter-box">
+            <span class="counter-num" id="days-val">00</span>
+            <span class="counter-label">Ngày</span>
+          </div>
+          <div class="counter-box">
+            <span class="counter-num" id="hours-val">00</span>
+            <span class="counter-label">Giờ</span>
+          </div>
+          <div class="counter-box">
+            <span class="counter-num" id="minutes-val">00</span>
+            <span class="counter-label">Phút</span>
+          </div>
+          <div class="counter-box">
+            <span class="counter-num" id="seconds-val">00</span>
+            <span class="counter-label">Giây</span>
+          </div>
+        </div>
+        <p class="counter-quote">"Mỗi giây phút bên em đều là những khoảnh khắc tuyệt vời nhất."</p>
+      </div>
+    </header>
+
+    <!-- SECTION: TRÁI TIM 3D TƯƠNG TÁC -->
+    <section class="heart-3d-section">
+      <div class="section-badge">✨ 3D Interactive Heart ✨</div>
+      <h2 class="section-title">Trái Tim Này Thuộc Về Em</h2>
+      <p class="section-desc">Chạm vào trái tim để gửi ngàn tình yêu đến Mỹ Hòa</p>
+
+      <div class="heart-3d-wrapper" id="heart-container">
+        <!-- Three.js Canvas sẽ được mount vào đây -->
+        <div id="three-canvas-holder"></div>
+
+        <!-- Chữ uốn cong xoay tròn 360 độ quanh trái tim -->
+        <div class="orbiting-text-container" id="orbiting-text-wrapper">
+          <svg viewBox="0 0 400 400" class="orbiting-svg">
+            <defs>
+              <path id="circlePath" d="M 200, 200 m -150, 0 a 150,150 0 1,1 300,0 a 150,150 0 1,1 -300,0" />
+            </defs>
+            <text class="orbit-text">
+              <textPath href="#circlePath" startOffset="0%">
+                ★ I LOVE YOU FOREVER ♥ MY LOVE MỸ HÒA ♥ 20.10 ★ FOREVER & ALWAYS ♥
+              </textPath>
+            </text>
+          </svg>
+        </div>
+
+        <!-- Hint click -->
+        <div class="heart-tap-hint">
+          <i class="fa-solid fa-hand-pointer tap-animation"></i>
+          <span>Chạm vào trái tim anh nè 💕</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: BỨC THƯ TÌNH 20/10 GÕ TỪNG KÝ TỰ -->
+    <section class="letter-section">
+      <div class="letter-parchment">
+        <div class="parchment-border"></div>
+        <div class="letter-stamp">
+          <i class="fa-solid fa-envelope-open-text"></i>
+          <span>20.10.2026</span>
+        </div>
+
+        <h2 class="letter-heading">Thư Gửi Người Con Gái Anh Yêu</h2>
+
+        <!-- Khung gõ chữ Typewriter -->
+        <div class="letter-body">
+          <p id="typewriter-text" class="typewriter-content"></p>
+          <span class="typewriter-cursor">|</span>
+        </div>
+
+        <div class="letter-signature">
+          <p class="sig-note">Yêu em trọn vẹn và mãi mãi,</p>
+          <p class="sig-name" id="letter-sender-name">Anh của em ❤️</p>
+        </div>
+
+        <div class="letter-controls">
+          <button id="btn-replay-letter" class="btn-secondary-glow" title="Đọc lại từ đầu">
+            <i class="fa-solid fa-rotate-right"></i> Đọc lại thư
+          </button>
+          <button id="btn-show-full-letter" class="btn-secondary-glow" title="Hiện toàn bộ lời chúc">
+            <i class="fa-solid fa-angles-down"></i> Xem tất cả
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: KHU VƯỜN HOA DÀNH RIÊNG CHO MỸ HÒA -->
+    <section class="garden-section">
+      <div class="section-badge">🌸 Romantic Secret Garden 🌸</div>
+      <h2 class="section-title">Khu Vườn Hoa Dành Riêng Cho Em</h2>
+      <p class="section-desc">Mỗi đóa hoa lưu giữ một lời nhắn bí mật dành tặng riêng Mỹ Hòa. Nhấn vào từng bông nhé!</p>
+
+      <div class="flower-bed-container" id="flower-garden">
+        <!-- Render các đóa hoa tương tác từ JavaScript -->
+      </div>
+
+      <!-- Hộp thoại thông điệp của hoa nở -->
+      <div id="flower-message-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+          <button class="modal-close-btn" id="close-flower-modal">&times;</button>
+          <div class="modal-icon-badge" id="modal-flower-icon">🌹</div>
+          <h3 class="modal-flower-title" id="modal-flower-name">Hoa Hồng Đỏ</h3>
+          <p class="modal-flower-msg" id="modal-flower-text"></p>
+          <div class="modal-flower-hearts">💖 💕 🌸 🌷 ✨</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: ALBUM KỶ NIỆM POLAROID 3D -->
+    <section class="memory-section">
+      <div class="section-badge">📸 Our Beautiful Journey 📸</div>
+      <h2 class="section-title">Khoảnh Khắc Tình Yêu</h2>
+      <p class="section-desc">Những khoảnh khắc ngọt ngào bên Mỹ Hòa mà anh muốn lưu giữ trọn đời</p>
+
+      <div class="polaroid-gallery" id="polaroid-gallery">
+        <!-- Render các bức ảnh polaroid từ JS -->
+      </div>
+
+      <!-- Lightbox xem ảnh to -->
+      <div id="image-lightbox" class="lightbox-overlay hidden">
+        <div class="lightbox-content">
+          <button class="lightbox-close" id="close-lightbox">&times;</button>
+          <img id="lightbox-img" src="" alt="Kỷ niệm tình yêu">
+          <p id="lightbox-caption" class="lightbox-caption"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: HỘP QUÀ BÍ MẬT 3D -->
+    <section class="giftbox-section">
+      <div class="section-badge">🎁 Special Surprise 🎁</div>
+      <h2 class="section-title">Hộp Quà Bí Mật</h2>
+      <p class="section-desc">Nhấn vào chiếc hộp để khám phá điều bất ngờ cuối cùng nhé!</p>
+
+      <div class="gift-interactive-wrapper">
+        <div class="gift-box" id="mystery-gift-box">
+          <div class="gift-lid" id="gift-lid">
+            <div class="gift-ribbon-vertical"></div>
+            <div class="gift-bow">
+              <span class="bow-left"></span>
+              <span class="bow-center">❤</span>
+              <span class="bow-right"></span>
+            </div>
+          </div>
+          <div class="gift-body">
+            <div class="gift-ribbon-vertical"></div>
+            <div class="gift-ribbon-horizontal"></div>
+          </div>
+          <div class="gift-shadow"></div>
+        </div>
+
+        <p class="gift-click-text" id="gift-status-text">👉 Nhấn vào hộp quà để mở 🎁</p>
+
+        <!-- Thẻ thông điệp bật ra khi mở hộp quà -->
+        <div class="gift-revealed-card hidden" id="gift-card">
+          <div class="gold-ribbon-tag">✨ Món Quà Vô Giá ✨</div>
+          <h3 class="gift-card-title">Món quà tuyệt vời nhất của anh chính là có em trong cuộc đời này ❤️</h3>
+          <p class="gift-card-body">
+            Mỹ Hòa ơi! Cảm ơn em vì đã là nguồn cảm hứng, là nụ cười, và là sự dịu dàng lớn nhất của anh. Ngày 20/10 và cả 364 ngày còn lại, anh luôn ước mong em được hạnh phúc, bình yên và ngập tràn tình yêu!
+          </p>
+          <div class="gift-action-buttons">
+            <button id="btn-hug-me" class="btn-romantic-glow">
+              <i class="fa-solid fa-hands-holding-circle"></i> Ôm anh một cái nhé 🥺
+            </button>
+            <button id="btn-kiss-me" class="btn-secondary-glow">
+              <i class="fa-solid fa-kiss-wink-heart"></i> Hôn em một cái nè 💋
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="romantic-footer">
+      <div class="footer-hearts-stream">
+        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-heart"></i>
+      </div>
+      <p class="footer-main-text">Happy Vietnamese Women's Day • 20.10.2026</p>
+      <p class="footer-sub-text">Được tạo với tất cả tình yêu thương dành cho <strong>Mỹ Hòa</strong> ❤️</p>
+    </footer>
+
+  </main>
+
+  <!-- Sweet Pop-up Notification (Dành cho nút ôm / hôn) -->
+  <div id="sweet-toast" class="sweet-toast hidden">
+    <div class="toast-icon">🥰</div>
+    <div class="toast-message" id="toast-text">Anh ôm Mỹ Hòa thật chặt nè! Yêu em nhất quả đất!</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
