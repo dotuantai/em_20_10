@@ -14,7 +14,7 @@ const CONFIG = {
   
   // Ngày kỷ niệm yêu nhau (Định dạng: YYYY-MM-DDTHH:MM:SS)
   // Bạn có thể đổi ngày bắt đầu yêu nhau ở đây
-  anniversaryDate: "2023-10-20T00:00:00",
+  anniversaryDate: "2026-09-03T08:00:00",
 
   // Lời chúc 20/10 hiển thị dạng gõ máy chữ
   wishLetter: 
